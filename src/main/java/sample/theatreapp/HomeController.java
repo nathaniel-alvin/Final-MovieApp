@@ -19,12 +19,11 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        button_logout.setOnAction(actionEvent -> DBUtils.changeScene(actionEvent, "LogIn.fxml", "Log In!", null, null, null));
+        button_logout.setOnAction(actionEvent -> DBUtils.changeScene(actionEvent, "LogIn.fxml", "Log In!", null, null));
     }
 
-    public void setUserInformation (String firstName, String lastName, String favGenre) {
+    public void setUserInformation (String firstName, String favGenre) {
         label_first_name.setText((firstName));
-        label_last_name.setText((lastName));
         label_fav_genre.setText((favGenre));
     }
 }
