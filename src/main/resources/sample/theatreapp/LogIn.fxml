@@ -72,11 +72,6 @@
                         <Image url="@../../../../img/lock-logo.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="label_invalid" layoutX="70.0" layoutY="256.0" text="Invalid Login. Please try again." textFill="#ff5151">
-                    <font>
-                        <Font name="Arial Rounded MT Bold" size="16.0" />
-                    </font>
-                </Label>
             </children>
         </AnchorPane>
     </children>

@@ -48,8 +48,8 @@ public class DBUtils {
          PreparedStatement psCheckUserExists = null;
          ResultSet resultSet = null;
          try {
-             connection = DriverManager.getConnection("jdbc:mysql://103.82.242.16:5555/nathaniel_alvin", "nathaniel-alvin", "42430");
-             psCheckUserExists = connection.prepareStatement("SELECT * FROM Accounts WHERE username = ?");
+             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie booking", "root", "conversation");
+             psCheckUserExists = connection.prepareStatement("SELECT * FROM account WHERE username = ?");
              psCheckUserExists.setString(1, username);
              resultSet = psCheckUserExists.executeQuery();
 
@@ -62,7 +62,7 @@ public class DBUtils {
              } else {
                  // update username, password, fav_genre
 
-                 psInsert = connection.prepareStatement("INSERT INTO Accounts (username, passoword, tickets, fav_genre) VALUES (?, ?, null, ?) ");
+                 psInsert = connection.prepareStatement("INSERT INTO account (username, password, email, favorite_genre, tickets) VALUES (?, ?, null , ?, null ) ");
                  psInsert.setString(1, username);
                  psInsert.setString(2, password);
                  psInsert.setString(3, favGenre);
@@ -110,8 +110,8 @@ public class DBUtils {
          ResultSet resultSet = null;
 
          try {
-             connection = DriverManager.getConnection("jdbc:mysql://103.82.242.16:5555/nathaniel_alvin", "nathaniel-alvin", "42430");
-             preparedStatement = connection.prepareStatement("SELECT password, fav_genre FROM Accounts WHERE username = ?");
+             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/movie booking", "root", "conversation");
+             preparedStatement = connection.prepareStatement("SELECT password, favorite_genre FROM account WHERE username = ?");
              preparedStatement.setString(1, username);
              resultSet = preparedStatement.executeQuery();
 
@@ -123,7 +123,7 @@ public class DBUtils {
              } else {
                  while (resultSet.next()) {
                      String retrievedPassword = resultSet.getString("password");
-                     String retrievedGenre = resultSet.getString("fav_genre");
+                     String retrievedGenre = resultSet.getString("favorite_genre");
                      if (retrievedPassword.equals(password)) {
                          changeScene(event, "Home.fxml", "Welcome!", username, retrievedGenre);
                      } else {

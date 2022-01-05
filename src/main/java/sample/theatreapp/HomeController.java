@@ -14,7 +14,7 @@ public class HomeController implements Initializable {
     private Button button_logout, button_edit, button_view_films, button_view_bookings;
 
     @FXML
-    private Label label_first_name, label_last_name, label_fav_genre;
+    private Label label_username, label_fav_genre;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -22,8 +22,8 @@ public class HomeController implements Initializable {
         button_logout.setOnAction(actionEvent -> DBUtils.changeScene(actionEvent, "LogIn.fxml", "Log In!", null, null));
     }
 
-    public void setUserInformation (String firstName, String favGenre) {
-        label_first_name.setText((firstName));
+    public void setUserInformation (String username, String favGenre) {
+        label_username.setText((username));
         label_fav_genre.setText((favGenre));
     }
 }
